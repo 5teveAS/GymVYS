@@ -1,0 +1,118 @@
+﻿@model GymVidaYSaludWEB.Entities.DatosCliente
+@{
+    ViewData["Title"] = "Registrar Cliente";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GymVidaYSaludWEB.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar Cliente</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col"></div>
+            <div class="col">
+                <div class="card mt-5 cardLogin">
+                    <div class="card-header text-center">
+                        Registrar Cliente
+                    </div>
+                    <div class="card-body">
+
+                        @using (Html.BeginForm("RegistrarCliente", "DatosClientes", FormMethod.Post, htmlAttributes: new { @class = "mt-5 needs-validation" }))
+                        {
+
+                            <div class="mb-3">
+                                <label class="text-center mb-2">Cédula</label>
+                                @Html.TextBox("Cedula","",
+                            new
+                            {
+                            @class="form-control",
+                            @type = "text",@placeholder="Digite la cédula"
+                            })
+                                <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.Cedula)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-center mb-2">Nombre Completo</label>
+                                @Html.TextBox("NombreCompleto","",
+                            new
+                            {
+                            @class="form-control",
+                            @type="input",@placeholder="Digite el nombre completo"
+                            })
+                                <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.NombreCompleto)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-center mb-2">Número de contacto</label>
+                                @Html.TextBox("NumContacto","",
+                            new
+                            {
+                            @class="form-control",
+                            @type = "number",
+                            @onkeypress="return isNumberKey(event)",
+                            @onpaste="return false",
+                            min="0",@placeholder="Digite el número de contacto"
+                            })
+                                <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.NumContacto)
+                                </div>
+                            </div>
+
+                            <div class="mb-3 form-group">
+                                <label class="text-center mb-2">Correo Eletrónico</label>
+                                @Html.TextBox("Correo","",
+                            new
+                            {
+                            @class="form-control",
+                            @type="input",@placeholder="Digite el correo electrónico"
+                            })
+                                <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.Correo)
+                                </div>
+                            </div>
+
+
+
+                            <div class="col">
+                                <button class="btn btn-success h6" style="width:100%; font-size:15px">Registrar Cliente</button>
+                            </div>
+
+                        }
+                        <div class="col">
+                            <a class="btn text-white btn-lg btn-block mt-3 h6" style="background-color:#212529; width:100%; font-size:15px" asp-controller="DatosClientes" asp-action="ConsultarTodosClientes">Volver</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+@section Scripts {
+<script>
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+        return true;
+    }
+</script>
+}

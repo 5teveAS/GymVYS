@@ -1,0 +1,99 @@
+﻿@model GymVidaYSaludWEB.Entities.DatosMedidas
+
+@{
+    ViewData["Title"] = "Consultar una medida";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Datos de la medida</title>
+</head>
+<div class="container">
+    <p class="text-center h2 p-4">Información de las medidas del cliente</p>
+
+<body>
+
+    <hr />
+     <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6 border">
+
+                            <p class="h4 mt-4">
+                                ID Cliente: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.idCliente)</span>
+                            </p>
+                            <p class="h4 mt-4">
+                                Peso: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Peso) kg</span>
+                            </p>
+                            <p class="h4 mt-4">
+                                Altura: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Altura) m</span>
+                            </p>
+                            <p class="h4 mt-4">
+                                Pecho <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Pecho) cm</span>
+                            </p>
+                            <p class="h4 mt-4">
+                                Cadera: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Cadera) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Abdomen: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Abdomen) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Cintura: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.Cintura) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Bicep Izquierdo: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.BicepI) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Bicep Derecho: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.BicepD) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Muslo Izquierdo: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.MusloI) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Muslo Derecho: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.MusloD) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Pantorrilla Izquierda: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.PantorrillaI) cm</span>
+                            </p>
+                               <p class="h4 mt-4">
+                                Pantorrilla Derecha: <span style="color:gray; margin-left:5%;">@Html.DisplayFor(model => model.PantorrillaD) cm</span>
+                            </p>
+                       </div>
+                    </div>
+     
+</div>
+<div>
+          <div class="row gx-5 align-items-center justify-content-center">
+          @if (ViewBag.Rol == "1")
+                {
+                    <div class="mt-5 col-lg-8 col-xl-7 col-xxl-6 ">
+                        <div>
+                       @Html.ActionLink("Editar", "ActualizarMedida", new { Model.idMedidas}, new {@class="btn btn-warning btn-lg btn-block", @style="width:100%"})
+                        </div>
+
+                         <div>
+                                <a class="btn text-white btn-lg btn-block mt-3" style="background-color:#212529; width:100%;" asp-controller="DatosMedidas" asp-action="ConsultarMedidas">Volver</a>
+                         </div
+                         <br>
+                         <br>
+                         <br>
+                         <br>
+
+                      </div>
+                      
+                } else
+                {
+                    <div class="mt-5 col-lg-8 col-xl-7 col-xxl-6 ">
+                      <a class="btn text-white" style="background-color:#212529; width:100%" asp-controller="DatosMedidas" asp-action="ConsultarMedidas">Volver</a>
+                     </div>
+                }
+                 </div>
+                </div>
+
+    </body>
+</div>
+</div>
+</html>

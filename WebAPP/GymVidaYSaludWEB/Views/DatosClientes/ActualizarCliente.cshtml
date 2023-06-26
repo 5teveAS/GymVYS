@@ -1,0 +1,122 @@
+﻿@model GymVidaYSaludWEB.Entities.DatosCliente
+@{
+    ViewData["Title"] = "Actualizar Cliente";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GymVidaYSaludWEB.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Actualizar Cliente</title>
+</head>
+<div class="container">
+    
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col"></div>
+            <div class="col">
+                <div class="card mt-5 cardLogin">
+                    <div class="card-header text-center">
+                        Actualizar Cliente
+                    </div>
+                    <div class="card-body">
+                      
+                        @using (Html.BeginForm("ActualizarCliente", "DatosClientes"))
+                        {
+
+                   
+                               <div class="mb-3">
+                                <label class="text-center">Cédula</label>
+                                @Html.TextBox("Cedula",Model.Cedula.ToString(),
+                            new
+                            {
+                            @class="form-control",
+                            @type="input",@placeholder="Digite la cédula"
+                            })
+                             <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.Cedula)
+                                </div>
+                            </div>
+                               <div class="mb-3">
+                                <label class="text-center">Nombre Completo</label>
+                                @Html.TextBox("NombreCompleto",Model.NombreCompleto.ToString(),
+                            new
+                            {
+                            @class="form-control",
+                            @type="input",@placeholder="Digite el nombre completo"
+                            })
+                             <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.NombreCompleto)
+                                </div>
+                            </div>
+                                           <div class="mb-3">
+                                <label class="text-center">Número de Contacto</label>
+
+                                @Html.TextBox("NumContacto",Model.NumContacto.ToString()+"",
+                            new
+                            {
+                            @class="form-control",
+                            @type="number",
+                            @onkeypress="return isNumberKey(event)",
+                            @onpaste="return false",
+                            min="0",@placeholder="Digite el número de contacto"
+                            })
+                             <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.NumContacto)
+                                </div>
+                            </div>                <div class="mb-3">
+                                <label class="text-center">Correo electrónico</label>
+                                @Html.TextBox("Correo",Model.Correo.ToString(),
+                            new
+                            {
+                            @class="form-control",
+                            @type="input",@placeholder="Digite el correo electrónico"
+                            })
+                             <div class=" text-danger">
+                                    @Html.ValidationMessageFor(d => d.Correo)
+                                </div>
+                            </div>
+                        
+                            @Html.TextBoxFor(m=>m.idCliente,
+                            new
+                            {
+                            @class="form-control",
+                            @type="input", hidden="true"
+                            })
+                            
+                                <div class="mb-3">
+                                    <button class="btn btn-warning" style="width: 100%">Actualizar Cliente</button>
+                                </div>
+                                 
+                        }
+                          <a class="btn text-white btn-lg btn-block mt-3 h6" style="background-color:#212529; width:100%; font-size:15px" asp-controller="DatosClientes" asp-action="ConsultarTodosClientes">Volver</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+</div>
+@section Scripts {
+<script>
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+        return true;
+    }
+</script>
+}

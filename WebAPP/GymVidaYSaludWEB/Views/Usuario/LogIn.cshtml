@@ -1,0 +1,78 @@
+﻿@model GymVidaYSaludWEB.Entities.UsuariosObj
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GymVidaYSaludWEB.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/loginSite.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - GymVidaYSaludWEB</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Iniciar Sesion</title>
+</head>
+
+<body>
+  
+    <div class="container" style="margin-top:5%">
+
+        <div class="row">
+
+            <div class="col"></div>
+            <div class="col">
+                <div class="card btn-light mt-5 cardLogin">
+                    <div class="card-header text-center">
+                        Iniciar sesion
+                    </div>
+                    <div class="card-body">
+
+                        @using (Html.BeginForm("ConsultarUsuarioLogin", "Usuario"))
+                        {
+
+                            <div class="mb-3">
+                                <label class="text-center">Correo</label>
+                                @Html.TextBox("Correo","",
+                            new
+                            {
+                            @class="form-control",
+                            required="required",
+                            @type="input",
+                            })
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-center">Contraseña</label>
+                                @Html.TextBox("Contraseña","",
+                            new
+                            {
+                            @class="form-control",
+                            required="required",
+                            @type="password",
+                            })
+                            </div>
+
+                            <div class="row">
+
+                                <button class="btn btn-success mb-3" style="width: 100%">Iniciar Sesión</button>
+
+                                <p>@ViewBag.Mensaje</p>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
+</html>
